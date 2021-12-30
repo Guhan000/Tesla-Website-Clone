@@ -1,0 +1,29 @@
+import React from 'react';
+import {View, FlatList, Dimensions, SafeAreaView,Platform} from 'react-native';
+import CarItem from '../CarItem';
+import styles from './styles';
+import cars from './cars';
+
+
+
+const CarsList = (props) => {
+    return(
+      <View style={styles.container}>
+        
+          <FlatList
+            //={(item, index) => {
+            //  'item'+index;
+            //}}
+            data={cars}
+            renderItem={({item}) => <CarItem car={item} />}
+            keyExtractor={(item, index) => index.toString()}
+            showsVerticalScrollIndicator={false}
+            snapToAlignment={'start'}
+            decelerationRate={'fast'}
+            snapToInterval={Dimensions.get('window').height}
+          />
+         
+      </View>
+    );
+};
+export default CarsList;
